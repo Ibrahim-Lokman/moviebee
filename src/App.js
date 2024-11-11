@@ -61,17 +61,7 @@ export default function App() {
       </NavBar>
 
       <Main>
-        <Box element={<MovieList movies={movies} />} />
-        <Box
-          element={
-            <>
-              <WatchedSummary watched={watched} />
-              <WatchedMovieList watched={watched} />
-            </>
-          }
-        />
-
-        {/* <Box>
+        <Box>
           <MovieList movies={movies} />
         </Box>
         <Box>
@@ -79,7 +69,17 @@ export default function App() {
             <WatchedSummary watched={watched} />
             <WatchedMovieList watched={watched} />
           </>
-        </Box> */}
+        </Box>
+
+        {/* <Box element={<MovieList movies={movies} />} />
+        <Box
+          element={
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMovieList watched={watched} />
+            </>
+          }
+        /> */}
       </Main>
     </>
   );
@@ -128,20 +128,7 @@ function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
-function Box({ element }) {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <div className="box">
-      <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
-        {isOpen ? "–" : "+"}
-      </button>
-      {isOpen && element}
-    </div>
-  );
-}
-
-// function Box({ children }) {
+// function Box({ element }) {
 //   const [isOpen, setIsOpen] = useState(true);
 
 //   return (
@@ -149,10 +136,23 @@ function Box({ element }) {
 //       <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
 //         {isOpen ? "–" : "+"}
 //       </button>
-//       {isOpen && children}
+//       {isOpen && element}
 //     </div>
 //   );
 // }
+
+function Box({ children }) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <div className="box">
+      <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
+        {isOpen ? "–" : "+"}
+      </button>
+      {isOpen && children}
+    </div>
+  );
+}
 
 // function ListBox({ children }) {
 //   const [isOpen1, setIsOpen1] = useState(true);
