@@ -54,18 +54,21 @@ export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   return (
     <>
-      <NavBar movies={movies} />
+      <NavBar>
+        <Search />
+        <NumResults movies={movies} />{" "}
+      </NavBar>
+      .
       <Main movies={movies} />
     </>
   );
 }
-function NavBar({ movies }) {
-  const [query, setQuery] = useState("");
+function NavBar({ children }) {
+  // const [query, setQuery] = useState("");
   return (
     <nav className="nav-bar">
       <Logo />
-      <Search />
-      <NumResults movies={movies} />
+      {children}
     </nav>
   );
 }
