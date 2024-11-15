@@ -68,6 +68,8 @@ export default function App() {
           );
           if (!res.ok) throw new Error("Failed to fetch movies");
           const data = await res.json();
+          if (data.response === "False") throw new Error(data.Error);
+
           setMovies(data.Search);
         } catch (error) {
           console.error(error);
