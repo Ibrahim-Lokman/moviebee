@@ -359,6 +359,10 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     function () {
       if (title) {
         document.title = `movieBee - ${title}`;
+        //clean up effect
+        return function () {
+          document.title = "movieBee";
+        };
       }
     },
     [title]
