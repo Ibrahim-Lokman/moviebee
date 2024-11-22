@@ -60,7 +60,7 @@ export default function App() {
     const data = localStorage.getItem("watched");
     return data ? JSON.parse(data) : [];
   });
-  const { movies, isLoading, error } = useMovies(query, handleCloseMovie);
+  const { movies, isLoading, error } = useMovies(query);
   function handleSelectedMovie(id) {
     setSelectedId((selectedId) => (selectedId === id ? null : id));
   }
